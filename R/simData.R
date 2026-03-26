@@ -37,7 +37,7 @@ simData <- function(n, s1 = 20, s2 = 5, ratio = 0.2) {
   q2 <- s2 / ratio
   xi1 <- 1
   xi2 <- 0.8
-  xi3 <- 0.05
+  xi3 <- 0.4
 
   group <- sample(1:3, size = n, replace = TRUE, prob = c(1 / 3, 1 / 3, 1 / 3))
 
