@@ -1,6 +1,6 @@
 ---
 title: "Data Exploration with CHiMiC"
-output: rmarkdown::html_vignette
+output: github_document
 vignette: >
   %\VignetteIndexEntry{Data Exploration with CHiMiC}
   %\VignetteEngine{knitr::rmarkdown}
