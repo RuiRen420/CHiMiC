@@ -14,3 +14,5 @@ Depends: R (>= 3.5.0)
 Imports: MASS, stats, caret, sparcl, data.table
 Encoding: UTF-8
 RoxygenNote: 7.3.2
+URL: https://github.com/RuiRen420/CHiMiC
+BugReports: https://github.com/RuiRen420/CHiMiC/issues
