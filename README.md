@@ -22,10 +22,15 @@ q1 <- simdata$q1
 q2 <- simdata$q2
 cate <- simdata$CATE
 w <- 0.5
-lambda1 <- 20
-lambda2 <- 15
+lambda1 <- 50
+lambda2 <- 50
 
 #For demonstration purposes, max_iter and inner_iter are set to small values.
 #In practice, larger iterations (e.g., 100) are needed for precise estimation.
 chimic_obj <- CHiMiC(Z, q1, q2, TE = cate, w, G, lambda1, lambda2,
-                     max_iter = 5, inner_iter = 5, tol = 1e-2)
+                     max_iter = 50, inner_iter = 50, tol = 1e-2)
+```
+
+## Data Exploration
+To see a detailed example of how to explore the treatment effects and selected high-dimensional features (with complex heatmaps and boxplots) after running the model, please view our vignette:
+👉 **[Data Exploration with CHiMiC](vignettes/data-exploration.md)**
