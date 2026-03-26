@@ -1,0 +1,16 @@
+Package: CHiMiC
+Type: Package
+Title: Causal-Guided High-Dimensional Mixed Clustering
+Version: 0.1.0
+Authors@R: c(
+    person(given = "Rui", family = "Ren", email = "ruiren420@gmail.com", role = c("aut", "cre")),
+    person(given = "Xiaofeng", family = "Wang", role = "aut"),
+    person(given = "Deborah H", family = "Kwon", role = "aut")
+  )
+Maintainer: Rui Ren <ruiren420@gmail.com>
+Description: A statistical method for causal-guided clustering to identify disease phenotypes driven by heterogeneous treatment effects. The method performs clustering on mixed-type clinical data, including continuous and categorical variables, with guidance from heterogeneous treatment effects. A penalty-based variable selection procedure is also implemented to identify relevant clinical variables associated with the discovered clusters.
+License: GPL (>= 2)
+Depends: R (>= 3.5.0)
+Imports: MASS, stats, caret, sparcl, data.table
+Encoding: UTF-8
+RoxygenNote: 7.3.2
