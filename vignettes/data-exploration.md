@@ -1,24 +1,22 @@
----
-title: "Data Exploration with CHiMiC"
-output: github_document
----
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.width = 8,
-  fig.height = 6
-)
-```
+Data Exploration with CHiMiC
+================
 
 # 1. Introduction
-This vignette demonstrates how to perform Exploratory Data Analysis (EDA) on mixed-type clinical data after applying the CHiMiC (Causal High-dimensional Mixed-type Clustering) function. Our goal is to visualize the clustering results, the conditional average treatment effects (TE), and the informative high-dimensional features selected by the model.
+
+This vignette demonstrates how to perform Exploratory Data Analysis
+(EDA) on mixed-type clinical data after applying the CHiMiC (Causal
+High-dimensional Mixed-type Clustering) function. Our goal is to
+visualize the clustering results, the conditional average treatment
+effects (TE), and the informative high-dimensional features selected by
+the model.
 
 # 2. Simulating Data and Fitting the Model
-First, we simulate a dataset containing both continuous and categorical clinical covariates, along with a simulated treatment effect. Then, we fit the CHiMiC model.
 
-```{r, warning = FALSE, message = FALSE}
+First, we simulate a dataset containing both continuous and categorical
+clinical covariates, along with a simulated treatment effect. Then, we
+fit the CHiMiC model.
+
+``` r
 library(CHiMiC)
 
 set.seed(123)
@@ -40,8 +38,12 @@ chimic_obj <- CHiMiC(Z, q1, q2, TE = cate, w, G, lambda1, lambda2,
 ```
 
 # 3. Visualizing the Treatment Effect (TE)
-Since CHiMiC performs TE-guided clustering, it is crucial to verify that the identified subgroups exhibit distinct responses to the treatment. We can visualize this using a boxplot overlaid with jittered points.
-```{r, warning = FALSE, message = FALSE}
+
+Since CHiMiC performs TE-guided clustering, it is crucial to verify that
+the identified subgroups exhibit distinct responses to the treatment. We
+can visualize this using a boxplot overlaid with jittered points.
+
+``` r
 # Install packages if not already installed: install.packages(c("ggplot2", "dplyr", "tidyr", "patchwork"))
 library(ggplot2)
 library(dplyr)
@@ -68,9 +70,15 @@ p_te <- ggplot(plot_df, aes(x = Cluster, y = TE, fill = Cluster)) +
 print(p_te)
 ```
 
+![](data-exploration_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
 # 4. Exploring Selected High-Dimensional Features
-CHiMiC incorporates an MCP-based variable selection method. To display the selected informative continuous and categorical variables across different clusters, a complex heatmap is highly recommended.
-```{r, fig.width = 8, fig.height = 8, warning = FALSE, message = FALSE}
+
+CHiMiC incorporates an MCP-based variable selection method. To display
+the selected informative continuous and categorical variables across
+different clusters, a complex heatmap is highly recommended.
+
+``` r
 # Install ComplexHeatmap if not already installed: BiocManager::install("ComplexHeatmap")
 library(ComplexHeatmap)
 library(circlize) # For generating continuous color mapping
@@ -133,10 +141,14 @@ ht <- Heatmap(
 draw(ht, merge_legend = TRUE)
 ```
 
-# 5. Detailed Feature Comparison
-We can also inspect individual features to understand how specific covariates drive the cluster assignments.
+![](data-exploration_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
-```{r, warning = FALSE, message = FALSE}
+# 5. Detailed Feature Comparison
+
+We can also inspect individual features to understand how specific
+covariates drive the cluster assignments.
+
+``` r
 # For demonstration, extract the first continuous variables
 plot_df$Cont_V1 <- Z[, 1]
 
@@ -166,4 +178,4 @@ final_plot <- p_cont | p_cat
 print(final_plot)
 ```
 
-
+![](data-exploration_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
