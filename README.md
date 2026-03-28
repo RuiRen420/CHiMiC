@@ -14,7 +14,7 @@ devtools::install_github("RuiRen420/CHiMiC")
 ```R
 library(CHiMiC)
 set.seed(123)
-simdata <- simData(n = 500, s1 = 20, s2 = 5, ratio = 0.2)
+simdata <- simData(n = 1000, s1 = 20, s2 = 5, ratio = 0.2)
 
 Z <- simdata$Z
 G <- simdata$G
